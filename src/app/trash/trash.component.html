@@ -1,0 +1,29 @@
+<ng-container *ngIf="removedProduct.length;else noProductRemovedRef">
+    <div class="products-list">
+        <ng-container *ngFor="let item of removedProduct">
+            <mat-card class="product-card">
+                <img class="product-image" mat-card-image [src]="item.image" [alt]="item.title">
+                <mat-card-content>
+                    <p>
+                        {{item.title}}
+                    </p>
+                    <p>
+                        Category: {{item.category}}
+                    </p>
+                    <strong>
+                        MRP: &#8377;{{item.price}}
+                    </strong>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-raised-button (click)="addRemoveItem(item)" color="accent">RESTORE</button>
+                    <button class="remove-item" mat-raised-button (click)="deleteRemoveItem(item)"
+                        color="warn">REMOVE</button>
+                </mat-card-actions>
+            </mat-card>
+        </ng-container>
+    </div>
+</ng-container>
+
+<ng-template #noProductRemovedRef>
+    <div class="no-product">There is no item!!!</div>
+</ng-template>

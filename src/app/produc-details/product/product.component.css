@@ -1,0 +1,33 @@
+.add-product {
+	position: fixed;
+	width: 60px;
+	height: 60px;
+	bottom: 40px;
+	right: 40px;
+	color: #fff;
+	border-radius: 50px;
+	text-align: center;
+	box-shadow: 2px 2px 3px #999;
+}
+
+.product-image {
+	width: auto;
+	height: -webkit-fill-available;
+	margin: 20px 10px 10px 20px;
+	padding: inherit;
+}
+.card-content {
+	float: right;
+	margin: 20px 30px 20px 20px;
+	padding: inherit;
+	max-width: 688px;
+}
+.card-action {
+	margin: 20px 10px 10px 20px;
+	padding: inherit;
+}
+
+.remove {
+	float: right;
+}
+

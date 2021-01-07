@@ -1,0 +1,41 @@
+<h2 mat-dialog-title>Add Product</h2>
+<mat-dialog-content class="mat-typography">
+    <form class="container">
+        <mat-form-field class="full-width">
+            <mat-label>Product Name</mat-label>
+            <input matInput name="name" [(ngModel)]="productModel.title" required>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="full-width">
+            <mat-label>Category</mat-label>
+            <mat-select name="category" [(ngModel)]="productModel.category" required>
+                <mat-option *ngFor="let c of categories" [value]="c.value">
+                    {{c.viewValue}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="full-width">
+            <mat-label>Amount</mat-label>
+            <input matInput type="number" name="price" [(ngModel)]="productModel.price" required>
+            <span matPrefix>&#8377;&nbsp;</span>
+            <span matSuffix>.00</span>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="full-width">
+            <mat-label>Description</mat-label>
+            <textarea matInput name="desc" [(ngModel)]="productModel.description" required></textarea>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="full-width">
+            <mat-label>Image url</mat-label>
+            <input matInput type="text" name="image" [(ngModel)]="productModel.image" required>
+        </mat-form-field>
+    </form>
+
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close color="warn">CANCEL</button>
+    <button mat-button [mat-dialog-close]="productModel" color="primary" cdkFocusInitial>SAVE</button>
+</mat-dialog-actions>

@@ -1,0 +1,11 @@
+.remove-item {
+    float: right;
+}
+
+.no-product {
+    text-align: center;
+    margin: 10px;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 21px;
+}

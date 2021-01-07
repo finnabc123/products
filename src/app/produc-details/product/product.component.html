@@ -1,0 +1,23 @@
+<mat-card>
+    <mat-card-header>
+        <div mat-card-avatar></div>
+        <mat-card-title>{{product.title}}</mat-card-title>
+        <mat-card-subtitle>{{product.category | titlecase}}</mat-card-subtitle>
+    </mat-card-header>
+    <img class="product-image" mat-card-image [src]="product.image" [alt]="product.title">
+    <mat-card-content class="card-content">
+        <p>
+            {{product.description}}
+        </p>
+        <strong>
+            MRP: &#8377;{{product.price}}
+        </strong>
+    </mat-card-content>
+    <mat-card-actions class="card-action">
+        <button mat-raised-button color="accent">ADD TO CART</button>
+        <button mat-raised-button class="remove" (click)="removeItem(product)" color="warn">REMOVE</button>
+        <button class="add-product" mat-fab color="primary" (click)="addProduct()">
+            <mat-icon aria-hidden="false">add</mat-icon>
+        </button>
+    </mat-card-actions>
+</mat-card>

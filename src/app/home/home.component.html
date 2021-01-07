@@ -1,0 +1,31 @@
+<ng-container *ngIf="products.length">
+    <div class="item-filters">
+        <mat-checkbox checked="true" name="men clothing" (change)="selectedcategories($event)">Men Cloths</mat-checkbox>
+        <mat-checkbox checked="true" name="jewelery" (change)="selectedcategories($event)">Jewelery</mat-checkbox>
+        <mat-checkbox checked="true" name="electronics" (change)="selectedcategories($event)">Electronics</mat-checkbox>
+        <mat-checkbox checked="true" name="women clothing" (change)="selectedcategories($event)">Women Clothing
+        </mat-checkbox>
+    </div>
+    <div class="products-list">
+        <ng-container *ngFor="let item of products">
+            <mat-card class="product-card" *ngIf="item.isFilter && !item.isRemoved">
+                <img class="product-image" mat-card-image [src]="item.image" [alt]="item.title"
+                    [routerLink]="['/home', item.id]">
+                <mat-card-content>
+                    <p>
+                        {{item.title |titlecase}}
+                    </p>
+                    <p>
+                        Category: {{item.category}}
+                    </p>
+                    <strong>
+                        MRP: &#8377;{{item.price}}
+                    </strong>
+                </mat-card-content>
+            </mat-card>
+        </ng-container>
+    </div>
+    <div class="product-details">
+        <router-outlet></router-outlet>
+    </div>
+</ng-container>
