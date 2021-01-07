@@ -1,9 +1,12 @@
 <h2 mat-dialog-title>Add Product</h2>
 <mat-dialog-content class="mat-typography">
-    <form class="container">
+    <form class="container" #productForm="ngForm">
         <mat-form-field class="full-width">
             <mat-label>Product Name</mat-label>
-            <input matInput name="name" [(ngModel)]="productModel.title" required>
+            <input matInput name="name" [(ngModel)]="productModel.title" required maxlength="50">
+            <mat-error *ngIf="productForm.invalid && !productModel.title">
+                Product Name is <strong>required</strong>
+            </mat-error>
         </mat-form-field>
         <br>
         <mat-form-field class="full-width">
@@ -13,6 +16,9 @@
                     {{c.viewValue}}
                 </mat-option>
             </mat-select>
+            <mat-error *ngIf="productForm.invalid && !productModel.category">
+                Product Category is <strong>required</strong>
+            </mat-error>
         </mat-form-field>
         <br>
         <mat-form-field class="full-width">
@@ -20,22 +26,33 @@
             <input matInput type="number" name="price" [(ngModel)]="productModel.price" required>
             <span matPrefix>&#8377;&nbsp;</span>
             <span matSuffix>.00</span>
+            <mat-error *ngIf="productForm.invalid && !productModel.price">
+                Product Amount is <strong>required</strong>
+            </mat-error>
         </mat-form-field>
         <br>
         <mat-form-field class="full-width">
             <mat-label>Description</mat-label>
-            <textarea matInput name="desc" [(ngModel)]="productModel.description" required></textarea>
+            <textarea matInput name="desc" [(ngModel)]="productModel.description" required minlength="150"></textarea>
+            <mat-error *ngIf="productForm.invalid && !productModel.description">
+                Product Description is <strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="productForm.invalid && productModel.description.length < 150">
+                Product Description minimum should be <strong>150 characters</strong>
+            </mat-error>
         </mat-form-field>
         <br>
         <mat-form-field class="full-width">
             <mat-label>Image url</mat-label>
             <input matInput type="text" name="image" [(ngModel)]="productModel.image" required>
+            <mat-error *ngIf="productForm.invalid && !productModel.image">
+                Product Image url is <strong>required</strong>
+            </mat-error>
         </mat-form-field>
     </form>
-
-
 </mat-dialog-content>
 <mat-dialog-actions align="end">
     <button mat-button mat-dialog-close color="warn">CANCEL</button>
-    <button mat-button [mat-dialog-close]="productModel" color="primary" cdkFocusInitial>SAVE</button>
+    <button mat-button [mat-dialog-close]="productModel" color="primary" cdkFocusInitial
+        [disabled]="productForm.invalid">SAVE</button>
 </mat-dialog-actions>

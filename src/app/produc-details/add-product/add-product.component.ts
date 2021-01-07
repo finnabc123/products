@@ -18,7 +18,7 @@ export class AddProductComponent {
     id: Math.floor(Math.random() * 1000) + 1,
     title: '',
     category: '',
-    price: 0,
+    price: '',
     description: '',
     image: '',
     isFilter: true,

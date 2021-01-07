@@ -46,21 +46,22 @@ export class ProductComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result.price}`);
-      const product = {
-        id: result.id,
-        title: result.title,
-        category: result.category,
-        price: result.price,
-        description: result.description,
-        image: result.image,
-        isFilter: true,
-        isRemoved: false
+      console.log(`Dialog result: ${result}`);
+      if (result) {
+        const product = {
+          id: result.id,
+          title: result.title,
+          category: result.category,
+          price: result.price,
+          description: result.description,
+          image: result.image,
+          isFilter: true,
+          isRemoved: false
+        }
+        console.log(product)
+        this.productService.dummyProducts.unshift(product);
+        this.router.navigateByUrl('/home');
       }
-      console.log(product)
-      this.productService.dummyProducts.unshift(product);
-      this.router.navigateByUrl('/home');
     });
   }
-
 }
